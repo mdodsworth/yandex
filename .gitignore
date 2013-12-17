@@ -1,5 +1,8 @@
-*.class
+.gradle/*
+build/*
 
+*.un~
+*.class
 # Package Files #
 *.jar
 *.war

@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile 'com.google.guava:guava:latest.release'
+
+    testCompile 'junit:junit:latest.release'
+    testCompile 'org.mockito:mockito-all:latest.release'
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '1.9'
+}
