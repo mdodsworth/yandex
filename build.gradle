@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'scala'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 
@@ -9,8 +10,8 @@ repositories {
 }
 
 dependencies {
-
     compile 'com.google.guava:guava:latest.release'
+    compile 'org.scala-lang:scala-library:2.10.3'
 
     testCompile 'junit:junit:latest.release'
     testCompile 'org.mockito:mockito-all:latest.release'

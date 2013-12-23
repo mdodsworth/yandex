@@ -2,7 +2,9 @@ gradle/*
 .gradle/*
 build/*
 
+.DS_Store
 *.un~
+*.swp
 *.class
 # Package Files #
 *.jar
