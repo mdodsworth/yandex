@@ -1,4 +1,3 @@
-gradle/*
 .gradle/*
 build/*
 
@@ -10,3 +9,7 @@ build/*
 *.jar
 *.war
 *.ear
+
+/* gradle jar is required */
+!gradle/wrapper/gradle-wrapper.jar
+
