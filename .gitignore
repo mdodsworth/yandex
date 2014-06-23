@@ -5,10 +5,16 @@ build/*
 *.un~
 *.swp
 *.class
-# Package Files #
+
+# Package Files
 *.jar
 *.war
 *.ear
+
+# idea project files
+*.ipr
+*.iml
+*.iws
 
 /* gradle jar is required */
 !gradle/wrapper/gradle-wrapper.jar

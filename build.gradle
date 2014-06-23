@@ -1,9 +1,7 @@
 apply plugin: 'java'
-apply plugin: 'scala'
-apply plugin: 'idea'
-apply plugin: 'eclipse'
 
-sourceCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -11,7 +9,8 @@ repositories {
 
 dependencies {
     compile 'com.google.guava:guava:latest.release'
-    compile 'org.scala-lang:scala-library:2.10.3'
+    compile 'org.apache.spark:spark-core_2.10:latest.release'
+    compile 'args4j:args4j:latest.release'
 
     testCompile 'junit:junit:latest.release'
     testCompile 'org.mockito:mockito-all:latest.release'
