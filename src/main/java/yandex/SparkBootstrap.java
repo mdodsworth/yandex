@@ -42,7 +42,7 @@ public class SparkBootstrap {
             System.err.println("java SparkBootstrap [options...] arguments...");
             parser.printUsage(System.err);
             System.err.println();
-            System.err.println("  Example: java SparkBootstrap"+parser.printExample(OptionHandlerFilter.ALL));
+            System.err.println("  Example: java SparkBootstrap" + parser.printExample(OptionHandlerFilter.ALL));
             throw new IllegalArgumentException(e);
         }
 
