@@ -1,25 +1,13 @@
 queries = LOAD '$INPUT/queries';
-tempQueryInfo = FOREACH queries { 
-    GENERATE (long)$0 AS sessionId, (long)$1 AS timePassed, (long)$3 AS serpId, 
-        (long)$4 AS queryId, STRSPLIT((chararray)$5, ',') AS terms, 
-        {(0, STRSPLIT((chararray)$6, ',')), (1, STRSPLIT((chararray)$7, ',')), (2, STRSPLIT((chararray)$8, ',')), 
-        (3, STRSPLIT((chararray)$9, ',')), (4, STRSPLIT((chararray)$10, ',')), (5, STRSPLIT((chararray)$11, ',')), 
-        (6, STRSPLIT((chararray)$12, ',')), (7, STRSPLIT((chararray)$13, ',')), (8, STRSPLIT((chararray)$14, ',')), 
-        (9, STRSPLIT((chararray)$15, ','))} AS results;
-}
-
-queryInfo = FOREACH tempQueryInfo {
-    a = FOREACH results GENERATE $0, FLATTEN($1);
-    b = FOREACH a GENERATE (long)$0 AS rank, (long)$1 AS urlId, (long)$2 AS domainId;
-    GENERATE sessionId, timePassed, serpId, queryId, terms, b as results;
-};
+queryInfo = FOREACH queries GENERATE (long)$0 AS sessionId, (long)$1 AS timePassed, (long)$3 AS serpId, 
+    (long)$4 AS queryId, (chararray)$5 AS terms;
 
 -- capture the query length
-queryLength = FOREACH queryInfo GENERATE sessionId, serpId, queryId, SIZE(terms);
+queryLength = FOREACH queryInfo GENERATE queryId, SIZE(STRSPLIT(terms, ','));
 STORE queryLength INTO '$OUTPUT/queryLength' USING PigStorage();
 
 -- capture each queries position
-queryPosition = FOREACH queryInfo GENERATE sessionId, queryId, serpId;
+queryPosition = FOREACH queryInfo GENERATE queryId, serpId;
 STORE queryPosition INTO '$OUTPUT/queryPosition' USING PigStorage();
 
 /*======== prior query count in session ========*/
